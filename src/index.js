@@ -78,7 +78,7 @@ $.fn.extend({
                 }
             });
         }
-        
+
     },
     compressHandler: function(img) {
         var canvas = document.createElement("canvas");
@@ -124,7 +124,9 @@ $.fn.extend({
         var _this = this, filed = _this._opt.uploadField || 'uploadfile';
         var postData = $.extend(_this._opt.data, {});
         postData[filed] = data;
+        var headers = $.extend(_this.opt.headers, {})
         $.ajax({
+            headers: headers
             url: _this._opt.uploadUrl,
             type: 'post',
             data: postData,
