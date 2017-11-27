@@ -3,9 +3,9 @@ $(function () {
     $('#content').artEditor({
         imgTar: '#imageUpload',
         limitSize: 5,   // 兆
-        showServer: false,
-        uploadUrl: 'http://localhost/PROJECT_OWN/NodeJS/artEditor/service/service.php',
-        data: {},
+        showServer: true,
+        uploadUrl: 'http://dev.app.richlink.com.cn/api/userfile/upload',
+        headers: {'token': 'token'},
         uploadField: 'image',
         breaks: false,
         placeholader: '请输入文章正文内容',

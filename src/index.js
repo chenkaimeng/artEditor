@@ -124,11 +124,9 @@ $.fn.extend({
         var _this = this, filed = _this._opt.uploadField || 'uploadfile';
         var postData = $.extend(_this._opt.data, {});
         postData[filed] = data;
-        console.log(_this._opt)
-        var headers = $.extend(_this.opt.headers, {})
-        console.log(headers)
+        var headers = $.extend(_this._opt.headers, {})
         $.ajax({
-            headers: headers
+            headers: headers,
             url: _this._opt.uploadUrl,
             type: 'post',
             data: postData,

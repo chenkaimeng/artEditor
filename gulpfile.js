@@ -39,4 +39,3 @@ gulp.task('default', function () {
         .pipe(uglify())    //压缩
         .pipe(gulp.dest('dist'));  //输出
 });
-
