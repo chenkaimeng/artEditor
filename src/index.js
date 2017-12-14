@@ -125,22 +125,27 @@ $.fn.extend({
         var postData = $.extend(_this._opt.data, {});
         postData[filed] = data;
         var headers = $.extend(_this._opt.headers, {})
+        var imgId = (new Date()).getTime()
+
         $.ajax({
             headers: headers,
             url: _this._opt.uploadUrl,
             type: 'post',
             data: postData,
             cache: false,
-        })
-        .then(function (res) {
+            beforeSend: function () {
+                var img = '<img id="img_' + imgId + '" src="/static/fo/loading.gif" style="max-width:100%;margin:auto;" />';
+                _this.insertImage(img);
+            }
+        }).then(function (res) {
                 var src = _this._opt.uploadSuccess(res);
                 if (src) {
-                    var img = '<img src="' + src + '" style="max-width:100%;" />';
-                    _this.insertImage(img);
+                  $('#img_' + imgId).attr('src', src)
                 } else {
                     console.log('地址为空啊!大兄弟', src)
                 }
             }, function (error) {
+                $('#img_' + imgId).remove()
                 _this._opt.uploadError(error.status,error);
             })
 
